@@ -1,0 +1,529 @@
+/* === GLOBAL === */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #EEEEEE;
+}
+
+/* === HEADER === */
+header {
+  position: relative;
+  height: 200px;
+  background: #EEEEEE;
+  color: #010101;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.nav {
+  position: fixed;
+  top: -10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 12px;
+  color: #ffffff;
+  z-index: 999;
+}
+
+.nav.scrolled {
+  background-color: #EEEEEE;
+  transition: background-color 0.3s ease;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-kanan .kategori {
+  margin-right: 16px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* === SEARCH BAR === */
+.search-bar {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  padding: 5px 32px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 9;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+}
+
+.input-cari,
+.input-lokasi {
+  padding: 10px 16px;
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+  outline: none;
+}
+
+.input-cari {
+  flex: 3;
+  margin-right: 20px;
+}
+
+.input-lokasi {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.search-form button {
+  padding: 10px 18px;
+  background-color: #4e73df;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* === BUTTON STYLE === */
+.nav-right a,
+.nav-right span,
+#kategoriBtn,
+#userBtn,
+.btn-tambah {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#kategoriBtn,
+#userBtn {
+  padding: 0;
+  background-color: #2563eb;
+}
+
+.btn-tambah {
+  padding: 0 16px;
+  background-color: #16a34a;
+}
+
+.btn-tambah:hover {
+  background-color: #15803d;
+}
+
+/* === USER MENU === */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 54px;
+  right: 0;
+  background-color: #b4daea;
+  min-width: 200px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  z-index: 999;
+  display: none;
+  overflow: hidden;
+}
+
+.user-dropdown.show-dropdown {
+  display: block;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #99c2d4;
+}
+
+.user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #ddd;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details strong {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.user-details a {
+  font-size: 13px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.user-details a:hover {
+  text-decoration: underline;
+}
+
+.user-dropdown hr {
+  margin: 5px 0;
+  border-color: #ffffff;
+}
+
+.user-dropdown .dropdown-item {
+  display: block;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.user-dropdown .dropdown-item:hover {
+  background: #f59d9d;
+}
+
+
+/* === LOGIN POPUP === */
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.login-box {
+  background-color: #ffffff;
+  width: 350px;
+  margin: 100px auto;
+  padding: 25px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.login-box h2 {
+  margin-top: 0;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  border: 1px solid #cccccc;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1e40af;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* === KATEGORI DROPDOWN === */
+.kategori {
+  position: relative;
+  display: inline-block;
+}
+
+#kategoriBtn {
+  background: none;
+  color: #567079;
+  font-size: 16px;
+  text-decoration: underline;
+  height: auto;
+}
+
+#kategoriBtn:hover {
+  color: #cbd5e1;
+}
+
+.kategori-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 600px;
+  padding: 20px 25px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  top: 50px;
+  right: 0;
+  flex-wrap: wrap;
+  gap: 20px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+}
+
+.kategori-dropdown.show-dropdown {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.kategori-column {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kategori-column h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 5px;
+}
+
+.kategori-column a {
+  display: block;
+  font-size: 14px;
+  color: #444444;
+  text-decoration: none;
+  padding: 1px 0;
+  line-height: 1.3;
+}
+
+.kategori-column a:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+/* === HERO SECTION === */
+.hero-section {
+  text-align: left;
+  padding: 20px 0;
+  color: #831313;
+  max-width: 800px;
+  margin-left: 0;
+  margin-top: 120px;
+}
+
+.hero-section h1 {
+  font-size: 46px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.hero-section p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.hero-section .btn-tambah {
+  background-color: #22c55e;
+  padding: 20px 24px;
+  font-size: 16px;
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+.hero-section .btn-tambah:hover {
+  background-color: #16a34a;
+}
+
+/* === PRODUK CARD === */
+.rekomendasi {
+  padding: 30px 20px;
+  background: #EEEEEE;
+}
+
+.rekomendasi h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.produk-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
+}
+
+.produk-card-wrapper {
+  width: 200px;
+}
+
+.produk-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+.produk-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.produk-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.produk-info {
+  padding: 12px;
+  text-align: start;
+}
+
+.produk-info h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #28a745;
+}
+
+.produk-nama {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.produk-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.produk-lokasi {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.love-icon {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.love-icon:hover {
+  color: #e63946;
+}
+
+.btn-lihat-lebih {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.btn-lihat-lebih:hover {
+  background: #1e40af;
+}
+
+/* === FOOTER === */
+footer {
+  margin-top: 60px;
+  background: #214e79;
+  color: #ffffff;
+  padding: 30px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.footer-section {
+  margin-bottom: 15px;
+  margin-right: 300px;
+}
+
+.footer-section h6 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 4px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.footer-social {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer-social i {
+  margin: 0 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.footer-copy {
+  width: 100%;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-link:hover {
+  color: #007bff;
+}
